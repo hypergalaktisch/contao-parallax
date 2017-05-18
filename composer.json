@@ -7,7 +7,7 @@
   ],
   "type": "contao-module",
   "homepage": "https://github.com/hypergalaktisch/contao-parallax",
-  "license": "LGPL-3.0+",
+  "license": "MIT",
   "authors": [{
     "name": "hypergalaktisch",
     "email": "info@hypergalaktisch.com",

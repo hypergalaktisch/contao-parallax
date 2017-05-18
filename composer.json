@@ -1,0 +1,35 @@
+{
+  "name": "hypergalaktisch/contao-parallax",
+  "description": "Add parallax scroll effect for contao article",
+  "keywords": [
+    "contao",
+    "parallax"
+  ],
+  "type": "contao-module",
+  "homepage": "https://github.com/hypergalaktisch/contao-parallax",
+  "license": "LGPL-3.0+",
+  "authors": [{
+    "name": "hypergalaktisch",
+    "email": "info@hypergalaktisch.com",
+    "homepage": "http://hypergalaktisch.com",
+    "role": "Developer"
+  }],
+  "support": {
+    "issues": "https://github.com/hypergalaktisch/contao-xl-parallax/issues"
+  },
+  "require": {
+    "contao/core-bundle": ">3.5,<4"
+  },
+  "autoload": {
+    "classmap": [
+      ""
+    ]
+  },
+  "extra": {
+    "contao": {
+      "sources": {
+        "": "system/modules/xl-parallax"
+      }
+    }
+  }
+}

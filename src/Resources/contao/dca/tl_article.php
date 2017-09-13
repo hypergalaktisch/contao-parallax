@@ -1,4 +1,11 @@
 <?php
+/**
+ * @copyright  Georg Jaedicke
+ * @author     Georg Jaedicke (hypergalaktisch)
+ * @package    Parallax
+ * @license    LGPL-3.0+
+ * @see	       https://github.com/hypergalaktisch/contao-parallax
+ */
 
 array_push($GLOBALS['TL_DCA']['tl_article']['palettes']['__selector__'], 'xlParallaxAddImage');
 $GLOBALS['TL_DCA']['tl_article']['palettes']['default'] = str_replace(

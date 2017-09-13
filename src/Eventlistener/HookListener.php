@@ -1,8 +1,35 @@
 <?php
+/**
+ * @copyright  Georg Jaedicke
+ * @author     Georg Jaedicke (hypergalaktisch)
+ * @package    Parallax
+ * @license    LGPL-3.0+
+ * @see	       https://github.com/hypergalaktisch/contao-parallax
+ */
 
-class Parallax
+namespace Hypergalaktisch\ParallaxBundle\EventListener;
+
+use Contao\CoreBundle\Framework\ContaoFrameworkInterface;
+use Hypergalaktisch\ParallaxBundle\Parallax;
+
+class HookListener
 {
-    public function addParallaxImage($objTemplate, $arrData, $objModule)
+    /**
+     * @var ContaoFrameworkInterface
+     */
+    private $framework;
+
+    /**
+     * Constructor.
+     *
+     * @param ContaoFrameworkInterface $framework
+     */
+    public function __construct(ContaoFrameworkInterface $framework)
+    {
+        $this->framework = $framework;
+    }
+
+    public function compileArticle($objTemplate, $arrData, $objModule)
     {
         $addParallax = $arrData['xlParallaxAddImage'];
         $parallaxSRC = $arrData['xlParallaxSingleSRC'];
@@ -34,7 +61,7 @@ class Parallax
         }
     }
 
-    public function setParallaxTemplate($objTemplate)
+    public function parseTemplate($objTemplate)
     {
         if ($objTemplate->getName() == 'mod_article')
         {

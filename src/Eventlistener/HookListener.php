@@ -10,7 +10,6 @@
 namespace Hypergalaktisch\ParallaxBundle\EventListener;
 
 use Contao\CoreBundle\Framework\ContaoFrameworkInterface;
-use Hypergalaktisch\ParallaxBundle\Parallax;
 
 class HookListener
 {

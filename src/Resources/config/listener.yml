@@ -1,5 +1,6 @@
 services:
     hypergalaktisch_parallax.listener.hooks:
         class: Hypergalaktisch\ParallaxBundle\EventListener\HookListener
+        public: true
         arguments:
             - "@contao.framework"

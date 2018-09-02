@@ -30,42 +30,35 @@ class HookListener
 
     public function compileArticle($objTemplate, $arrData, $objModule)
     {
-        $addParallax = $arrData['xlParallaxAddImage'];
-        $parallaxSRC = $arrData['xlParallaxSingleSRC'];
-        if ($addParallax == 1) {
-            if ($parallaxSRC == '') {
-                return '';
-            }
+        // Add an parallax background image
+        if ($objTemplate->xlParallaxAddImage && $objTemplate->xlParallaxSingleSRC != '') {
+            $objModel = \FilesModel::findByUuid($objTemplate->xlParallaxSingleSRC);
 
-            $objFile = \FilesModel::findByUuid($parallaxSRC);
+            if ($objModel !== null && is_file(TL_ROOT . '/' . $objModel->path)) {
 
-            if ($objFile === null) {
-                if (!\Validator::isUuid($parallaxSRC)) {
-                    return '<p class="error">' . $GLOBALS['TL_LANG']['ERR']['version2format'] . '</p>';
+                $objTemplate->parallaxSingleSRC = $objModel->path;
+
+                // Override the default image size
+                if ($objTemplate->xlParallaxSize != '') {
+                    $size = \StringUtil::deserialize($objTemplate->xlParallaxSize);
+
+                    if ($size[0] > 0 || $size[1] > 0 || is_numeric($size[2])) {
+                        $objTemplate->parallaxSingleSRC = \Image::create($objModel->path, $size)->executeResize()->getResizedPath();
+                    }
                 }
-                return '';
+
+                // Parallax Options
+                $position = deserialize($arrData['xlParallaxPosition']);
+                $objTemplate->parallaxPosition = array("x" => $position[0], "y" => $position[1]);
+                $objTemplate->parallaxBleed = $arrData['xlParallaxBleed'];
             }
-
-            if (!is_file(TL_ROOT . '/' . $objFile->path)) {
-                return '';
-            }
-
-            $parallaxSRC = $objFile->path;
-            $objTemplate->parallaxSRC = $parallaxSRC;
-
-            # Parallax Options
-            $position = deserialize($arrData['xlParallaxPosition']);
-            $objTemplate->parallaxPosition = array("x" => $position[0], "y" => $position[1]);
-            $objTemplate->parallaxBleed = $arrData['xlParallaxBleed'];
         }
     }
 
     public function parseTemplate($objTemplate)
     {
-        if ($objTemplate->getName() == 'mod_article')
-        {
-            $parallaxSRC = $objTemplate->__get('parallaxSRC');
-            if (!empty($parallaxSRC)) {
+        if ($objTemplate->getName() == 'mod_article') {
+            if (!empty($objTemplate->parallaxSingleSRC)) {
                 $objTemplate->setName('xl_parallax_mod_article');
             }
         }

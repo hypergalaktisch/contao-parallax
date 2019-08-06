@@ -18,7 +18,7 @@ Contao\CoreBundle\DataContainer\PaletteManipulator::create()
    ->applyToPalette('default', 'tl_article')
 ;
 Contao\CoreBundle\DataContainer\PaletteManipulator::create()
-    ->addField('xlParallaxAddImage', 'protected', Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_AFTER)
+    ->addField('xlParallaxAddImage', 'protected', Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_APPEND)
     ->applyToPalette('__selector__', 'tl_article');
 ;
 

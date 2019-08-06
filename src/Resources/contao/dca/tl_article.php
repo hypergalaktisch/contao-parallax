@@ -9,6 +9,8 @@
 
 System::loadLanguageFile('tl_content');
 
+$GLOBALS['TL_DCA']['tl_article']['palettes']['__selector__'][] = 'xlParallaxAddImage';
+
 /**
 * Extend default palette
 */
@@ -16,10 +18,6 @@ Contao\CoreBundle\DataContainer\PaletteManipulator::create()
    ->addLegend('xlParallax_legend', 'syndication_legend', Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_BEFORE, true)
    ->addField('xlParallaxAddImage', 'xlParallax_legend', Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_APPEND)
    ->applyToPalette('default', 'tl_article')
-;
-Contao\CoreBundle\DataContainer\PaletteManipulator::create()
-    ->addField('xlParallaxAddImage', 'protected', Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_APPEND)
-    ->applyToPalette('__selector__', 'tl_article');
 ;
 
 $GLOBALS['TL_DCA']['tl_article']['subpalettes']['xlParallaxAddImage'] = 'xlParallaxSingleSRC,xlParallaxSize,xlParallaxPosition,xlParallaxBleed';

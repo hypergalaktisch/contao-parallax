@@ -17,6 +17,10 @@ Contao\CoreBundle\DataContainer\PaletteManipulator::create()
    ->addField('xlParallaxAddImage', 'xlParallax_legend', Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_APPEND)
    ->applyToPalette('default', 'tl_article')
 ;
+Contao\CoreBundle\DataContainer\PaletteManipulator::create()
+    ->addField('xlParallaxAddImage', 'protected', Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_AFTER)
+    ->applyToPalette('__selector__', 'tl_article');
+;
 
 $GLOBALS['TL_DCA']['tl_article']['subpalettes']['xlParallaxAddImage'] = 'xlParallaxSingleSRC,xlParallaxSize,xlParallaxPosition,xlParallaxBleed';
 

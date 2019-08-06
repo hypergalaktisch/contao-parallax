@@ -9,12 +9,15 @@
 
 System::loadLanguageFile('tl_content');
 
-array_push($GLOBALS['TL_DCA']['tl_article']['palettes']['__selector__'], 'xlParallaxAddImage');
-$GLOBALS['TL_DCA']['tl_article']['palettes']['default'] = str_replace(
-    '{syndication_legend}',
-    '{xlParallax_legend:hide},xlParallaxAddImage;{syndication_legend}',
-    $GLOBALS['TL_DCA']['tl_article']['palettes']['default']
-);
+/**
+* Extend default palette
+*/
+Contao\CoreBundle\DataContainer\PaletteManipulator::create()
+   ->addLegend('xlParallax_legend', 'syndication_legend', Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_BEFORE, true)
+   ->addField('xlParallaxAddImage', 'xlParallax_legend', Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_APPEND)
+   ->applyToPalette('default', 'tl_article')
+;
+
 $GLOBALS['TL_DCA']['tl_article']['subpalettes']['xlParallaxAddImage'] = 'xlParallaxSingleSRC,xlParallaxSize,xlParallaxPosition,xlParallaxBleed';
 
 $GLOBALS['TL_DCA']['tl_article']['fields']['xlParallaxAddImage'] = array

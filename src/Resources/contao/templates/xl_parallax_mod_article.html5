@@ -28,7 +28,7 @@
   $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/hypergalaktischparallax/js/xl-parallax.js';
 
   ?>
-  <div class="xl-parallax" data-parallax="scroll" data-image-src="<?= $this->parallaxSRC ?>"<?php if (!empty($this->parallaxPosition['x'])): ?> data-position-x="<?= $this->parallaxPosition['x'] ?>"<?php endif; ?><?php if (!empty($this->parallaxPosition['y'])): ?> data-position-y="<?= $this->parallaxPosition['y'] ?>"<?php endif; ?><?php if (!empty($this->parallaxBleed)): ?> data-bleed="<?= $this->parallaxBleed ?>"<?php endif; ?>>
+  <div class="xl-parallax" data-parallax="scroll" data-image-src="<?= $this->parallaxSingleSRC ?>"<?php if (!empty($this->parallaxPosition['x'])): ?> data-position-x="<?= $this->parallaxPosition['x'] ?>"<?php endif; ?><?php if (!empty($this->parallaxPosition['y'])): ?> data-position-y="<?= $this->parallaxPosition['y'] ?>"<?php endif; ?><?php if (!empty($this->parallaxBleed)): ?> data-bleed="<?= $this->parallaxBleed ?>"<?php endif; ?>>
     <div class="<?= $this->class ?> block"<?= $this->cssID ?><?php if ($this->style): ?> style="<?= $this->style ?>"<?php endif; ?>>
       <?php if ($this->printable): ?>
         <?php $this->block('syndication'); ?>
